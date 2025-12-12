@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
 import { getWeatherDescription } from "../utils/wmoCodes";
-import { formatTemp } from "../utils/formatTemp";
+import { formatWindSpeed } from "../utils/formatWindSpeed";
+import formatTemp from "../utils/formatTemp";
 
-function weekdayName(date: Date) {
-  return date.toLocaleDateString(undefined, { weekday: "long" });
-}
+
 
 export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -43,17 +42,17 @@ export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) 
   });
 
   const index = todayIndex >= 0 ? todayIndex : 0;
-  const date = weatherData.daily.time[index];
+  
 
   return (
     <div className="dailyWeather">
       <div className="weatherForecast">
-        <div className="weatherDay">
-          <h3>Today is {weekdayName(date)}!</h3>
-          <p>Temperature: {formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
-          <p>Weather: {getWeatherDescription(Math.round(weatherData.daily.weather_code[index]))}</p>
-          <p>Wind Speed: {weatherData.daily.wind_speed_10m_mean[index]} km/h</p>
-          <p className="weatherCode">(Code: {weatherData.daily.weather_code[index]})</p>
+        <div className="weatherDay flex items-center space-x-4">
+          <p className="text-[#65AED5] text-5xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
+          <div>
+            <p className="text-[#65AED5] font-semibold text-sm">{getWeatherDescription(Math.round(weatherData.daily.weather_code[index]))}</p>
+            <p className="text-[#65AED5] font-semibold text-sm">{formatWindSpeed(weatherData.daily.wind_speed_10m_mean[index], unit)}</p>
+          </div>
         </div>
       </div>
     </div>

@@ -10,6 +10,10 @@ export function LocationHeader() {
 	const [city, setCity] = useState<string | null>(null);
 	const [stateName, setStateName] = useState<string | null>(null);
 
+	function weekdayName(date: Date) {
+        return date.toLocaleDateString('en-US', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+    }
+
 	useEffect(() => {
 		const load = async () => {
 			try {
@@ -59,15 +63,11 @@ export function LocationHeader() {
 
 	return (
 		<div>
-			<div className="weatherHeader">
-				<h2>Weather Forecast</h2>
-				<p>
-					Location: {renderLocation()}
+			<div className="weatherHeader text-white">
+				<p className="font-semibold text-lg">
+					📍 {renderLocation()}
 				</p>
-				<p>
-					Timezone: {weatherData.timezone} ({weatherData.timezoneAbbreviation})
-				</p>
-				<p>Elevation: {weatherData.elevation}m</p>
+                <h3 className="text-sm font-normal">{weekdayName(new Date())}</h3>
 			</div>
 			</div>
 	);

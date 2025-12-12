@@ -30,12 +30,14 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <div className="homepage">
+      <div className="homepage bg-gradient-to-r from-[#115DA3] to-[#4ECFED] h-screen w-full">
         <LocationHeader />
-        <div className="innerHeader">
-          <TodayWeather unit={unit} />
-          <div className="tempToggle">
-            <TempToggle unit={unit} onChange={setUnit} />
+        <div className="site-container bg-white">
+          <div className="innerHeader flex justify-between items-center p-6">
+            <TodayWeather unit={unit} />
+            {/* <div className="tempToggle"> */}
+              <TempToggle unit={unit} onChange={setUnit} />
+            {/* </div> */}
           </div>
           <div className="locSkyline"></div>
           <FiveDaySummary unit={unit} />

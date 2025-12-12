@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
-import { getWeatherDescription } from "../utils/wmoCodes";
+import { getWeatherDescription, wmoToIcon } from "../utils/wmoCodes";
 import { formatTemp } from "../utils/formatTemp";
 
 function weekdayName(date: Date) {
-	return date.toLocaleDateString(undefined, { weekday: "long" });
+	return date.toLocaleDateString(undefined, { weekday: "short" });
 }
 
 export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) {
@@ -43,21 +43,17 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 	const slice = weatherData.daily.time.slice(start, end);
 
 	return (
-		// <div className="dailyWeather">
-			<div className="border-2 border-indigo-600 flex flex-row flex-wrap md:flex-nowrap gap-4 m-8">
+			<div className="flex flex-row flex-wrap md:flex-nowrap m-8 text-[#4A4A4A]">
 				{slice.map((date, idx) => {
 					const index = start + idx;
 					return (
-						<div key={index} className="flex-1 min-w-0 border border-indigo-600 p-4">
-								<h3>{weekdayName(date)}</h3>
-								<p>Temperature: {formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
-								<p>Weather: {getWeatherDescription(Math.round(weatherData.daily.weather_code[index]))}</p>
-								<p>Wind Speed: {weatherData.daily.wind_speed_10m_mean[index]} km/h</p>
-								<p className="weatherCode">(Code: {weatherData.daily.weather_code[index]})</p>
+						<div key={index} className={`flex-1 min-w-0 ${idx < slice.length - 1 ? 'border-r border-[#D8D8D8]' : ''} p-4`}>
+								<p className="text-sm">{weekdayName(date)}</p>
+								<p className="text-2xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
+								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-4xl`}></i>
 							</div>
 					);
 				})}
 			</div>
-		// </div>
 	);
 }

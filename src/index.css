@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+@import './css/weather-icons.min.css';
+
 :root {
-  font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto';
   line-height: 1.5;
   font-weight: 600;
 

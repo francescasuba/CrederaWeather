@@ -29,6 +29,37 @@ export const wmoCodeInterpretation: Record<number, string> = {
 	99: "Thunderstorm with heavy hail",
 };
 
+export const wmoToIcon: Record<number, string> = {
+	0: "day-sunny",
+	1: "day-sunny-overcast",
+	2: "day-cloudy",
+	3: "cloudy",
+	45: "fog",
+	48: "fog",
+	51: "sprinkle",
+	53: "showers",
+	55: "rain",
+	56: "rain-mix",
+	57: "rain-mix",
+	61: "rain",
+	63: "rain",
+	65: "rain",
+	66: "rain-mix",
+	67: "rain-mix",
+	71: "snow",
+	73: "snow",
+	75: "snow",
+	77: "snow",
+	80: "showers",
+	81: "showers",
+	82: "rain",
+	85: "snow",
+	86: "snow",
+	95: "thunderstorm",
+	96: "thunderstorm",
+	99: "hail",
+};
+
 export function getWeatherDescription(code: number): string {
 	return wmoCodeInterpretation[code] || "Unknown weather condition";
 }

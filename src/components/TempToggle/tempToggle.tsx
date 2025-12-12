@@ -1,6 +1,4 @@
-import React from "react";
 import styles from "./TempToggle.module.css";
-
 export type TempUnit = "C" | "F";
 
 export function TempToggle({ unit, onChange }: { unit: TempUnit; onChange: (u: TempUnit) => void }) {
@@ -21,7 +19,10 @@ export function TempToggle({ unit, onChange }: { unit: TempUnit; onChange: (u: T
         }}
       >
         <span className={styles.track} aria-hidden="true">
-          <span className={`${styles.knob} ${checked ? styles.knobOn : styles.knobOff}`} />
+          <span className={styles.celsiusLabel}>Cº</span>
+          <span className={`${styles.knob} ${checked ? styles.knobOn : styles.knobOff}`}>
+            <span className={`${styles.fahrenheitLabel} ${!checked ? styles.fahrenheitHidden : ''}`}>Fº</span>
+          </span>
         </span>
         <span className={styles.visuallyHidden}>Toggle temperature unit</span>
       </button>

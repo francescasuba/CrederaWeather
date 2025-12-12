@@ -49,8 +49,8 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 					return (
 						<div key={index} className={`flex-1 min-w-0 ${idx < slice.length - 1 ? 'border-r border-[#D8D8D8]' : ''} p-4`}>
 								<p className="text-sm">{weekdayName(date)}</p>
+								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5]`}></i>
 								<p className="text-2xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
-								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-4xl`}></i>
 							</div>
 					);
 				})}

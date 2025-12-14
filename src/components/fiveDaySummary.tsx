@@ -43,15 +43,17 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 	const slice = weatherData.daily.time.slice(start, end);
 
 	return (
-			<div className="flex flex-row flex-wrap md:flex-nowrap text-[#4A4A4A]">
+			<div className="flex flex-col md:flex-row md:flex-nowrap m-0 text-[#4A4A4A]">
 				{slice.map((date, idx) => {
 					const index = start + idx;
 					return (
-						<div key={index} className={`flex-1 min-w-0 ${idx < slice.length - 1 ? 'border-r border-[#D8D8D8]' : ''} p-4`}>
-								<p className="text-sm">{weekdayName(date)}</p>
-								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5]`}></i>
-								<p className="text-2xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
+						<div key={index} className={`w-full md:flex-1 min-w-0 ${idx < slice.length - 1 ? 'md:border-r md:border-[#D8D8D8]' : ''} p-4`}> 
+							<div className="flex flex-row justify-between items-center gap-4 md:flex-col md:gap-2 md:items-center md:justify-start w-full">
+								<p className="text-sm w-full text-center">{weekdayName(date)}</p>
+								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5] w-full text-center`}></i>
+								<p className="text-2xl w-full text-center">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
 							</div>
+						</div>
 					);
 				})}
 			</div>

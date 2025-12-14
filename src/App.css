@@ -36,7 +36,6 @@
 	.site-container {
 		width: 80%;
 		max-width: var(--vw-tablet);
-		/* padding: 0 1rem; */
 		margin: 0 auto;
 	}
 
@@ -50,8 +49,13 @@
 	.site-container {
 		width: 80%;
 		max-width: var(--vw-mobile);
-		/* padding: 0 0.75rem; */
 		margin: 0 auto;
+	}
+
+	.inner-header {
+		background-image: none;
+		background-color: #D2FAFF;
+		aspect-ratio: unset;
 	}
 
 	#root {

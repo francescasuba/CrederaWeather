@@ -47,7 +47,7 @@ export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) 
   return (
     <div className="dailyWeather">
       <div className="weatherForecast">
-        <div className="weatherDay flex items-center space-x-4">
+        <div className="weatherDay flex items-center space-x-4 p-r-1">
           <p className="text-[#65AED5] text-5xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
           <i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5]`}></i>
           <div>

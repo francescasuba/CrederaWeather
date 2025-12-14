@@ -13,7 +13,7 @@ function App() {
       <div className="homepage bg-gradient-to-r from-[#115DA3] to-[#4ECFED] h-screen w-full">
         <LocationHeader />
         <div className="site-container bg-white mt-4 mx-auto rounded-xl shadow-lg">
-          <div className="inner-header flex justify-between items-start p-4">
+          <div className="inner-header flex flex-col sm:flex-row justify-between items-start p-2">
             <TodayWeather unit={unit} />
             <TempToggle unit={unit} onChange={setUnit} />
           </div>

@@ -62,13 +62,11 @@ export function LocationHeader() {
 	};
 
 	return (
-		<div>
-			<div className="weatherHeader text-white">
+			<div className="weatherHeader text-white p-6">
 				<p className="font-semibold text-lg">
 					📍 {renderLocation()}
 				</p>
                 <h3 className="text-sm font-normal">{weekdayName(new Date())}</h3>
-			</div>
 			</div>
 	);
 }

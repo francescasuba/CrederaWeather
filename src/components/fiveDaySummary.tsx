@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
-import { getWeatherDescription, wmoToIcon } from "../utils/wmoCodes";
+import { wmoToIcon } from "../utils/wmoCodes";
 import { formatTemp } from "../utils/formatTemp";
 
 function weekdayName(date: Date) {
@@ -43,7 +43,7 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 	const slice = weatherData.daily.time.slice(start, end);
 
 	return (
-			<div className="flex flex-row flex-wrap md:flex-nowrap m-8 text-[#4A4A4A]">
+			<div className="flex flex-row flex-wrap md:flex-nowrap text-[#4A4A4A]">
 				{slice.map((date, idx) => {
 					const index = start + idx;
 					return (

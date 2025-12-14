@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
-import { getWeatherDescription } from "../utils/wmoCodes";
+import { getWeatherDescription, wmoToIcon } from "../utils/wmoCodes";
 import { formatWindSpeed } from "../utils/formatWindSpeed";
 import formatTemp from "../utils/formatTemp";
 
@@ -49,6 +49,7 @@ export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) 
       <div className="weatherForecast">
         <div className="weatherDay flex items-center space-x-4">
           <p className="text-[#65AED5] text-5xl">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
+          <i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5]`}></i>
           <div>
             <p className="text-[#65AED5] font-semibold text-sm">{getWeatherDescription(Math.round(weatherData.daily.weather_code[index]))}</p>
             <p className="text-[#65AED5] font-semibold text-sm">{formatWindSpeed(weatherData.daily.wind_speed_10m_mean[index], unit)}</p>

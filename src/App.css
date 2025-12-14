@@ -11,32 +11,51 @@
 	width: 100%;
 	margin: 0;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 /* Responsive container utility */
 .site-container {
-	width: 100%;
+	width: 80%;
 	max-width: var(--vw-laptop);
-	margin: 0 auto;
-	/* padding: 0 1rem; */
+	margin: 0 16px 16px 0 auto;
 	box-sizing: border-box;
+}
+
+.inner-header {
+	background-image: url('/src/assets/dallas.png');
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	max-height: 500px;
+	aspect-ratio: 1.83;
 }
 
 /* Tablet: reduce max-width */
 @media (max-width: 1024px) {
-	#root,
 	.site-container {
+		width: 80%;
 		max-width: var(--vw-tablet);
 		/* padding: 0 1rem; */
+		margin: 0 auto;
+	}
+
+	#root {
+		max-width: var(--vw-tablet);
 	}
 }
 
 /* Mobile: use mobile width and smaller padding */
 @media (max-width: 640px) {
-	#root,
 	.site-container {
+		width: 80%;
 		max-width: var(--vw-mobile);
 		/* padding: 0 0.75rem; */
+		margin: 0 auto;
+	}
+
+	#root {
+		max-width: var(--vw-mobile);
 	}
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
+import location from '../assets/location.png';
 
 export function LocationHeader({ loading, setLoading }: { loading: boolean, setLoading: (v: boolean) => void }) {
 	const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -64,7 +65,7 @@ export function LocationHeader({ loading, setLoading }: { loading: boolean, setL
 	return (
 			<div className="weatherHeader text-white p-6">
 				<div className="flex items-center justify-center gap-2 min-h-[1.5em]">
-					<img src="/src/assets/location.png" alt="Location" className="h-[1.5em] inline-block" />
+					<img src={location} alt="Location" className="h-[1.5em] inline-block" />
 					<p className="font-semibold text-lg">{renderLocation()}</p>
 				</div>
                 <h3 className="text-sm font-normal">{weekdayName(new Date())}</h3>

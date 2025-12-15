@@ -23,7 +23,7 @@
 }
 
 .inner-header {
-	background-image: url('/src/assets/dallas.png');
+	background-image: url('./assets/dallas.png');
 	background-size: cover;
 	background-position: center;
 	width: 100%;

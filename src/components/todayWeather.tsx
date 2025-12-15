@@ -5,8 +5,6 @@ import { getWeatherDescription, wmoToIcon } from "../utils/wmoCodes";
 import { formatWindSpeed } from "../utils/formatWindSpeed";
 import formatTemp from "../utils/formatTemp";
 
-
-
 export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -31,7 +29,6 @@ export function TodayWeather({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }) 
   if (error) return <div className="dailyWeather">Error: {error}</div>;
   if (!weatherData) return <div className="dailyWeather">No data available</div>;
 
-  // find today's index (match date part only)
   const today = new Date();
   const todayIndex = weatherData.daily.time.findIndex((d) => {
     return (

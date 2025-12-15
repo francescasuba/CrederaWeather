@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
 
-export function LocationHeader() {
+export function LocationHeader({ loading, setLoading }: { loading: boolean, setLoading: (v: boolean) => void }) {
 	const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
 	const [city, setCity] = useState<string | null>(null);
@@ -42,6 +41,7 @@ export function LocationHeader() {
 			}
 		};
 		load();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (loading) return <div className="weatherHeader">Loading location...</div>;
@@ -63,9 +63,10 @@ export function LocationHeader() {
 
 	return (
 			<div className="weatherHeader text-white p-6">
-				<p className="font-semibold text-lg">
-					📍 {renderLocation()}
-				</p>
+				<div className="flex items-center justify-center gap-2 min-h-[1.5em]">
+					<img src="/src/assets/location.png" alt="Location" className="h-[1.5em] inline-block" />
+					<p className="font-semibold text-lg">{renderLocation()}</p>
+				</div>
                 <h3 className="text-sm font-normal">{weekdayName(new Date())}</h3>
 			</div>
 	);

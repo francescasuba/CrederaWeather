@@ -2,10 +2,7 @@
 
 ## Demo
 
-<video src="demo.mov" controls width="600">
-	Your browser does not support the video tag. [Download demo.mov](demo.mov)
-</video>
-
+https://github.com/user-attachments/assets/920c7220-368c-46d3-80b3-9bdb7fa9035c
 
 ## Features
 - Keyboard accessibility

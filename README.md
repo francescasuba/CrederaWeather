@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Welcome to My Weather App!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Demo
 
-Currently, two official plugins are available:
+<video src="demo.mov" controls width="600">
+	Your browser does not support the video tag. [Download demo.mov](demo.mov)
+</video>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Features
+- Keyboard accessibility
+- Page responsiveness (laptop, tablets, and mobile)
+- Animations
+- Celsius/Fahrenheit + kmh/mph feature parity
+- Weather descriptions
+## Future Considerations
+- Dark Mode/Light Mode
+- Location customization
+- Wind speed icons
+- Hover to expand for more weather information (precipitation levels, humidity, etc)
+- Overall code clean up and tests
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Challenges
 
-## Expanding the ESLint configuration
+### Overall Development Process
+- Prioritizing features
+- Creativity vs. too much divergence from the Figma
+- Time box
+- Keeping code and commit history clean
+- Rusty on React, never used Vite to set up a blank project before
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Responsiveness
+- Stacking elements
+- Keeping CSS clean / Trying to integrate Tailwind
+- Animations (if they're necessary in mobile view)
+- Aspect ratio of the city skyline
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### API
+- Fetching from the API within each component (how can I just do one call for the whole page?), since I worked in sections it was hard to conceptualize how to do it as a whole
+- No built in functionality for temperature and wind speed unit conversions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## External Tools/Libraries
+- React & Vite
+- Node 
+- Open-Meteo (Weather API)
+- Tailwind CSS
+- Bootstrap
+- <a href="https://erikflowers.github.io/weather-icons/">Weather Icons Repository</a>
+- <a href="https://nominatim.openstreetmap.org">Reverse Geocoding for location</a>

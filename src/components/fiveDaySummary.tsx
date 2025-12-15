@@ -3,6 +3,7 @@ import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
 import { wmoToIcon, getWeatherDescription } from "../utils/wmoCodes";
 import { formatTemp } from "../utils/formatTemp";
+import { getTodayIndex } from "../utils/getTodaysDate";
 
 function weekdayName(date: Date) {
 	return date.toLocaleDateString(undefined, { weekday: "short" });
@@ -38,11 +39,7 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 	if (error) return <div className="dailyWeather">Error: {error}</div>;
 	if (!weatherData) return <div className="dailyWeather">No data available</div>;
 
-	// find today's index (match date part only)
-	const today = new Date();
-	const todayIndex = weatherData.daily.time.findIndex(d => {
-		return d.getFullYear() === today.getFullYear() && d.getMonth() === today.getMonth() && d.getDate() === today.getDate();
-	});
+	const todayIndex = getTodayIndex(weatherData.daily.time);
 
 	const start = todayIndex >= 0 ? todayIndex + 1 : 0; // next day
 	const end = Math.min(start + 5, weatherData.daily.time.length);

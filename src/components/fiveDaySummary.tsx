@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWeatherData } from "../utils/dailyWeatherApi";
 import type { WeatherData } from "../utils/dailyWeatherApi";
-import { wmoToIcon } from "../utils/wmoCodes";
+import { wmoToIcon, getWeatherDescription } from "../utils/wmoCodes";
 import { formatTemp } from "../utils/formatTemp";
 
 function weekdayName(date: Date) {
@@ -51,6 +51,7 @@ export function FiveDaySummary({ unit = "F" as "C" | "F" }: { unit?: "C" | "F" }
 							<div className="flex flex-row justify-between items-center gap-4 md:flex-col md:gap-2 md:items-center md:justify-start w-full">
 								<p className="text-sm w-full text-center">{weekdayName(date)}</p>
 								<i className={`wi wi-${wmoToIcon[Math.round(weatherData.daily.weather_code[index])] || 'na'} text-5xl text-[#65AED5] w-full text-center`}></i>
+								<p className="text-sm w-full text-center">{getWeatherDescription(Math.round(weatherData.daily.weather_code[index]))}</p>
 								<p className="text-2xl w-full text-center">{formatTemp(weatherData.daily.temperature_2m_mean[index], unit)}</p>
 							</div>
 						</div>
